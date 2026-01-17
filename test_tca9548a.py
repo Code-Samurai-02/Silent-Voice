@@ -1,27 +1,42 @@
 from machine import I2C, Pin
+from time import sleep, ticks_ms
 from tca9548a import TCA9548A
-import time
+from mpu6050 import MPU6050
+from imu import IMU
 
-# -------- I2C SETUP (adjust pins if needed) --------
-i2c = I2C(0, scl=Pin(22), sda=Pin(21), freq=400000)
+i2c = I2C(0, scl=Pin(22), sda=Pin(21))
+tca = TCA9548A(i2c)
 
-print("Base I2C scan:", i2c.scan())
+# Init IMU 0
+tca.select(0)
+mpu0 = MPU6050(i2c)
+imu0 = IMU(mpu0)
 
-# -------- INIT MULTIPLEXER --------
-mux = TCA9548A(i2c)
+# Init IMU 1
+tca.select(1)
+mpu1 = MPU6050(i2c)
+imu1 = IMU(mpu1)
 
-print("\nTesting TCA9548A channels...\n")
+last0 = ticks_ms()
+last1 = ticks_ms()
 
-# -------- TEST EACH CHANNEL --------
-for ch in range(8):
-    try:
-        mux.select(ch)
-        devices = i2c.scan()
-        print("Channel", ch, "-> Devices:", devices)
-        time.sleep(0.3)
-    except Exception as e:
-        print("Channel", ch, "ERROR:", e)
+while True:
+    # ---- IMU 0 ----
+    tca.select(0)
+    now = ticks_ms()
+    dt0 = (now - last0) / 1000
+    last0 = now
+    r0, p0 = imu0.orientation(dt0)
 
-# -------- DISABLE ALL CHANNELS --------
-mux.disable()
-print("\nAll channels disabled")
+    # ---- IMU 1 ----
+    tca.select(1)
+    now = ticks_ms()
+    dt1 = (now - last1) / 1000
+    last1 = now
+    r1, p1 = imu1.orientation(dt1)
+
+    print(f"IMU0 → Roll:{r0:.2f} Pitch:{p0:.2f}")
+    print(f"IMU1 → Roll:{r1:.2f} Pitch:{p1:.2f}")
+    print("-" * 35)
+
+    sleep(0.02)
