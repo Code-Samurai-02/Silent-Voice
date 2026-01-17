@@ -1,20 +1,23 @@
-from machine import Pin, I2C
-from time import sleep
-from mpu6050 import MPU6050
+from machine import I2C, Pin
+from time import sleep, ticks_ms
+from mpu9250 import MPU9250
+from imu import IMU
 
-# ESP32 default I2C pins
 i2c = I2C(0, scl=Pin(22), sda=Pin(21))
 
-mpu = MPU6050(i2c)
+mpu = MPU9250(i2c)
+imu = IMU(mpu)
+
+last = ticks_ms()
 
 while True:
-    ax, ay, az = mpu.get_accel()
-    gx, gy, gz = mpu.get_gyro()
-    roll, pitch = mpu.get_angles()
+    now = ticks_ms()
+    dt = (now - last) / 1000
+    last = now
 
-    print("Accel (g):", ax, ay, az)
-    print("Gyro (°/s):", gx, gy, gz)
-    print("Roll:", roll, "Pitch:", pitch)
-    print("-" * 30)
+    roll, pitch = imu.orientation(dt)
+    yaw = imu.heading()
 
-    sleep(0.5)
+    print("Roll:", roll, "Pitch:", pitch, "Yaw:", yaw)
+
+    sleep(0.02)
