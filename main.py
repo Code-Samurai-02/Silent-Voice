@@ -19,6 +19,7 @@ x_min = ax
 y_min = ay
 z_min = az
 
+
 while True:
     tca.select(0)
     ax, ay, az = imu.accel()
