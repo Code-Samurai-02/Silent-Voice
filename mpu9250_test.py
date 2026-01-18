@@ -1,18 +1,23 @@
 from machine import I2C, Pin
-from time import sleep
-from mpu6050 import MPU6050
+from time import sleep, ticks_ms
+from mpu9250 import MPU9250
 from imu import IMU
 
-i2c = I2C(0, scl=Pin(22), sda=Pin(21))
+i2c = I2C(0, scl=Pin(12), sda=Pin(13))
 
-mpu = MPU6050(i2c)   # hardware driver
-imu = IMU(mpu)      # wrapper
+mpu = MPU9250(i2c)
+imu = IMU(mpu)
 
-dt = 0.02  # 20 ms loop
+last = ticks_ms()
 
 while True:
+    now = ticks_ms()
+    dt = (now - last) / 1000
+    last = now
+
     roll, pitch = imu.orientation(dt)
+    yaw = imu.heading()   # MPU9250-only
 
-    print("Roll:", roll, "Pitch:", pitch)
+    print("Roll:", roll, "Pitch:", pitch, "Yaw:", yaw)
 
-    sleep(dt)
+    sleep(0.02)
