@@ -74,8 +74,8 @@ while True:
     print("GYRO :", gx, gy, gz)
     print("ROLL :", roll, "PITCH:", pitch)
     print("----------------------")
-    ptint(f"Max - x : ({x_max}), y : ({y_max}), z : ({z_max})")
-    ptint(f"Min - x : ({x_min}), y : ({y_min}), z : ({z_min})")
+    print(f"Max - x : ({x_max}), y : ({y_max}), z : ({z_max})")
+    print(f"Min - x : ({x_min}), y : ({y_min}), z : ({z_min})")
     
 
     time.sleep(0.05)
