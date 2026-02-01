@@ -1,46 +1,81 @@
-from machine import I2C, Pin
-from time import ticks_ms, sleep
+from machine import Pin, I2C
+import time
+
 from mpu6050 import MPU6050
 from imu import IMU
-from tca9548a import TCA9548A
 
-i2c = I2C(0, scl=Pin(22), sda=Pin(21))
-tca = TCA9548A(i2c)
+# -------------------------
+# I2C CONFIGURATION
+# -------------------------
+# ESP32 Default Pins
+# SDA -> GPIO21
+# SCL -> GPIO22
 
-tca.select(0)
+i2c = I2C(
+    0,
+    scl=Pin(22),
+    sda=Pin(21),
+    freq=400000
+)
+
+# Scan I2C bus
+devices = i2c.scan()
+print("I2C Devices:", devices)
+
+if 0x68 not in devices:
+    raise RuntimeError("MPU6050 not found")
+
+# -------------------------
+# SENSOR INIT
+# -------------------------
 mpu = MPU6050(i2c)
 imu = IMU(mpu)
-ax, ay, az = imu.accel()
-x_max = ax
-y_max = ay
-z_max = az
 
-x_min = ax
-y_min = ay
-z_min = az
+# -------------------------
+# LOOP VARIABLES
+# -------------------------
+last_time = time.ticks_ms()
+
+#MAX
+x_max, y_max, z_max = imu.accel()
+
+#MIN
+x_min, y_min, z_min = imu.accel()
 
 
+
+# -------------------------
+# MAIN LOOP
+# -------------------------
 while True:
-    tca.select(0)
+    now = time.ticks_ms()
+    dt = time.ticks_diff(now, last_time) / 1000
+    last_time = now
+
     ax, ay, az = imu.accel()
-    print("X:", ax, "Y:", ay, "Z: ", az)
-    # MAX
-    if ax > x_max:
-        x_max = ax
-    if ay > y_max:
-        y_max = ay
-    if az > z_max:
-        z_max = az
+    gx, gy, gz = imu.gyro()
+    if (ax > x_max):
+      x_max = ax
+    elif(ax < x_min):
+      x_min = ax
+    if (ay > y_max):
+      y_max = ay
+    elif(ay < y_min):
+      y_min = ay
+    if (az > z_max):
+      z_max = az
+    elif(az < z_min):
+      z_min = az
+    
+    
+    roll, pitch = imu.orientation(dt)
 
-    # MIN
-    if ax < x_min:
-        x_min = ax
-    if ay < y_min:
-        y_min = ay
-    if az < z_min:
-        z_min = az
+    print("ACCEL:", ax, ay, az)
+    print("GYRO :", gx, gy, gz)
+    print("ROLL :", roll, "PITCH:", pitch)
+    print("----------------------")
+    ptint(f"Max - x : ({x_max}), y : ({y_max}), z : ({z_max})")
+    ptint(f"Min - x : ({x_min}), y : ({y_min}), z : ({z_min})")
+    
 
-    print("Min -", "X:", x_min, "Y:", y_min, "Z: ", z_min)
-    print("Max -", "X:", x_max, "Y:", y_max, "Z: ", z_max)
-    sleep(0.2)
-
+    time.sleep(0.05)
