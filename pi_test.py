@@ -1,14 +1,16 @@
 import socket
 
-# Listen on all interfaces at port 5000
 UDP_IP = "0.0.0.0"
 UDP_PORT = 5000
 
-sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind((UDP_IP, UDP_PORT))
 
-print(f"Pi is ready and listening on port {UDP_PORT}...")
+print("Listening for multiple ESP32s...")
 
 while True:
-    data, addr = sock.recvfrom(1024) # Buffer size is 1024 bytes
-    print(f"Received message: {data.decode()} from {addr}")
+    data, addr = sock.recvfrom(1024)
+    sender_ip = addr[0] # This extracts the IP (e.g., 192.168.1.50)
+    message = data.decode()
+    
+    print(f"[{sender_ip}] says: {message}")
