@@ -1,6 +1,32 @@
 from machine import Pin, I2C
 import time
 from mpu6050 import MPU6050
+import network
+import socket
+
+# 1. Connect to Wi-Fi
+ssid = 'Airtel_AIRTEL'
+password = 'Airtel@2007'
+pi_ip = '192.168.1.8'  # Change to your Pi's actual IP
+port = 5000
+
+wlan = network.WLAN(network.STA_IF)
+wlan.active(True)
+wlan.connect(ssid, password)
+
+print("Connecting to WiFi...")
+while not wlan.isconnected():
+    time.sleep(1)
+
+print("Connected! IP:", wlan.ifconfig()[0])
+
+# 2. Send the string
+def send_message(message):
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
+    sock.sendto(message.encode(), (pi_ip, port))
+    print(f"Sent: {message}")
+
+
 
 # ------------------------
 # I2C SETUP (ESP32)
@@ -35,11 +61,14 @@ index_down_min = -1.1
 while True:
     ax, ay, az = mpu.get_accel()
     if (ax <= index_up_max) and (ax >= index_up_min):
-        print("Index Up ")
+        print("Index Up")
+        send_message("Index Up")
     elif (ax <= index_half_max) and (ax >= index_half_min):
         print("Index Half")
+        send_message("Index Half")
     elif(ax <= index_down_max) and (ax >= index_down_min):
         print("Index Down")
+        send_message("Index Down")
     else:
         print("Error")
     

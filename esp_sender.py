@@ -3,9 +3,9 @@ import socket
 import time
 
 # 1. Connect to Wi-Fi
-ssid = 'YOUR_WIFI_NAME'
-password = 'YOUR_WIFI_PASSWORD'
-pi_ip = '192.168.1.XX'  # Change to your Pi's actual IP
+ssid = 'Airtel_AIRTEL'
+password = 'Airtel@2007'
+pi_ip = '192.168.1.8'  # Change to your Pi's actual IP
 port = 5000
 
 wlan = network.WLAN(network.STA_IF)
