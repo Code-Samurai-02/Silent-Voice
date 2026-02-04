@@ -28,7 +28,7 @@ def send_message(message):
 # ------------------------
 # I2C SETUP (ESP32)
 # ------------------------
-i2c = I2C(0, scl=Pin(15), sda=Pin(4), freq=400000)
+i2c = I2C(0, scl=Pin(26), sda=Pin(25), freq=400000)
 
 print("Scanning I2C...")
 devices = i2c.scan()
@@ -45,10 +45,10 @@ thumb_up_max = 1.1
 thumb_up_min = 0.75
 
 thumb_half_max = 0.7
-thumb_half_min = 0.15
+thumb_half_min = -0.2
 
-thumb_down_max = 0.1
-thumb_down_min = -0.4
+thumb_down_max = -0.3
+thumb_down_min = -1.1
 
 
 
@@ -68,8 +68,11 @@ while True:
         send_message("Thumb Down")
     else:
         print("Error")
+        send_message("Thumb Error")
+        
     
 
     time.sleep(0.2)
+
 
 
