@@ -12,5 +12,10 @@ while True:
     data, addr = sock.recvfrom(1024)
     sender_ip = addr[0] # This extracts the IP (e.g., 192.168.1.50)
     message = data.decode()
-    
+    thumb_finger = ""
+    index_finger = ""
+    middle_finger = ""
+    ring_finger = ""
+    pinky_finger = ""
+    print(type(sender_ip))
     print(f"[{sender_ip}] says: {message}")
