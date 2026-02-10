@@ -19,6 +19,6 @@ async def main():
     elif(a == 3):
         await edge_tts.Communicate(TEXT3, VOICE).save(FILE)
         os.system(f'explorer.exe {FILE}')
-    
+
 while True:
     asyncio.run(main())
