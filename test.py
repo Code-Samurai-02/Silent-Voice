@@ -1,39 +1,55 @@
 import pandas as pd
 import numpy as np
-from sklearn.model_selection import train_test_split
+import joblib
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 from sklearn.preprocessing import LabelEncoder
 
-# 1. Load dataset
-data = pd.read_csv("data/index_data.csv")  # change filename
+# Load dataset
+data = pd.read_csv("data/finger_data.csv")
 
-# 2. Features and labels
-X = data[['x', 'y', 'z']]
-y = data['alphabet']
+X = data.iloc[:, :-1].values
+y = data.iloc[:, -1].values
 
-# 3. Encode labels (A, B → 0,1)
 le = LabelEncoder()
 y_encoded = le.fit_transform(y)
 
-# 4. Train-test split (80-20)
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y_encoded, test_size=0.2, random_state=42
-)
+X_train, X_test = [], []
+y_train, y_test = [], []
 
-# 5. Train model
-model = RandomForestClassifier(n_estimators=100, random_state=42)
+unique_labels = np.unique(y_encoded)
+
+for label in unique_labels:
+    indices = np.where(y_encoded == label)[0]
+    
+    split = int(len(indices) * 0.8)
+    
+    train_idx = indices[:split]
+    test_idx = indices[split:]
+    
+    X_train.extend(X[train_idx])
+    y_train.extend(y_encoded[train_idx])
+    
+    X_test.extend(X[test_idx])
+    y_test.extend(y_encoded[test_idx])
+
+X_train = np.array(X_train)
+X_test = np.array(X_test)
+y_train = np.array(y_train)
+y_test = np.array(y_test)
+
+model = RandomForestClassifier(n_estimators=200, random_state=42)
 model.fit(X_train, y_train)
 
-# 6. Predict
 y_pred = model.predict(X_test)
 
-# 7. Evaluate
-print("Accuracy:", accuracy_score(y_test, y_pred))
-print("\nClassification Report:\n", classification_report(y_test, y_pred))
-print("\nConfusion Matrix:\n", confusion_matrix(y_test, y_pred))
+print("Per-Class Block Accuracy:", accuracy_score(y_test, y_pred))
+print("\nClassification Report:\n")
+print(classification_report(y_test, y_pred))
+print("\nConfusion Matrix:\n")
+print(confusion_matrix(y_test, y_pred))
 
-import joblib
-
-joblib.dump(model, "alphabet_model.pkl")
+joblib.dump(model, "silent_voice_model.pkl")
 joblib.dump(le, "label_encoder.pkl")
+
+print("\nModel saved successfully.")
