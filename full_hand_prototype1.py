@@ -2,12 +2,26 @@ from machine import I2C, Pin
 from time import sleep, ticks_ms
 from mpu6050 import MPU6050
 from imu import IMU
-
-i2c = I2C(0, scl=Pin(22), sda=Pin(21), freq=400000)
+from machine import WDT
+i2c = I2C(0, scl=Pin(22), sda=Pin(21), freq=100000)
 TCA_ADDR = 0x70
-
+wdt = WDT(timeout=5000)   # 5 seconds safety reset
+def i2c_recover():
+    global i2c
+    print("Recovering I2C...")
+    try:
+        i2c.deinit()
+    except:
+        pass
+    sleep(0.05)
+    i2c = I2C(0, scl=Pin(22), sda=Pin(21), freq=100000)
+    sleep(0.05)
 def tca_select(channel):
-    i2c.writeto(TCA_ADDR, bytearray([1 << channel]))
+    try:
+        i2c.writeto(TCA_ADDR, bytearray([1 << channel]))
+    except:
+        print("TCA write failed")
+        i2c_recover()
 
 # ---------- Safe Read Function ----------
 def safe_accel(imu_obj, channel, addr):
@@ -16,7 +30,8 @@ def safe_accel(imu_obj, channel, addr):
         return imu_obj.accel()
     
     except OSError as e:
-
+        print("I2C error on channel", channel)
+        i2c_recover()
         # Try soft recovery
         try:
             sleep(0.01)
@@ -34,6 +49,11 @@ def safe_accel(imu_obj, channel, addr):
                 return (0, 0, 0)
 
 # ---------- Initialization ----------
+
+
+
+
+
 tca_select(0)
 imu1 = IMU(MPU6050(i2c, addr=0x69))
 
@@ -101,6 +121,7 @@ pinky_down_min = -1.1
 h_list = []
 # ---------- Main Loop ----------
 while True:
+    wdt.feed()
     h_list = []
     ax1, ay1, az1 = safe_accel(imu1, 0, 0x69)
     ax2, ay2, az2 = safe_accel(imu2, 1, 0x68)
@@ -204,13 +225,13 @@ while True:
             print("P")
         elif h_list[0] == "Thumb Half" and h_list[1] == "Index Down" and h_list[2] == "Middle Down" and h_list[3] == "Ring Half" and h_list[4] == "Pinky Up":
             print("Q")
-        elif h_list[0] == "Thumb Down" and h_list[1] == "Index Up" and h_list[2] == "Middle Up" and h_list[3] == "Ring Half" and h_list[4] == "Pinky Half":
+        elif h_list[0] == "Thumb Up" and h_list[1] == "Index Up" and h_list[2] == "Middle Up" and h_list[3] == "Ring Up" and h_list[4] == "Pinky Half":
             print("R")
         elif h_list[0] == "Thumb Half" and h_list[1] == "Index Half" and h_list[2] == "Middle Half" and h_list[3] == "Ring Down" and h_list[4] == "Pinky Down":
             print("S")
         elif h_list[0] == "Thumb Up" and h_list[1] == "Index Half" and h_list[2] == "Middle Down" and h_list[3] == "Ring Down" and h_list[4] == "Pinky Down":
             print("T")
-        elif h_list[0] == "Thumb Down" and h_list[1] == "Index Up" and h_list[2] == "Middle Up" and h_list[3] == "Ring Down" and h_list[4] == "Pinky Down":
+        elif h_list[0] == "Thumb Half" and h_list[1] == "Index Up" and h_list[2] == "Middle Up" and h_list[3] == "Ring Down" and h_list[4] == "Pinky Down":
             print("U")
         elif h_list[0] == "Thumb Up" and h_list[1] == "Index Down" and h_list[2] == "Middle Up" and h_list[3] == "Ring Down" and h_list[4] == "Pinky Up":
             print("V")
@@ -224,4 +245,5 @@ while True:
             print("Z")
     print(h_list)
     sleep(0.02)
+
 
