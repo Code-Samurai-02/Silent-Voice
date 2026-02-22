@@ -166,5 +166,64 @@ while True:
         h_list.append("Pinky Down")
     else:
         print("Error")
-    print(h_list)
+    
+    
+    if len(h_list) != 5 :
+        continue
+    else:
+        if h_list[0] == "Thumb Up" and h_list[1] == "Index Down" and h_list[2] == "Middle Down" and h_list == "Ring Down" and h_list == "Pinky Down":
+            print("A")
+        elif h_list[0] == "Thumb Half" and h_list[1] == "Index Up" and h_list[2] == "Middle Up" and h_list == "Ring Up" and h_list == "Pinky Up":
+            print("B")
+        elif h_list[0] == "Thumb Up" and h_list[1] == "Index Half" and h_list[2] == "Middle Half" and h_list == "Ring Half" and h_list == "Pinky Half":
+            print("C")
+        elif h_list[0] == "Thumb Half" and h_list[1] == "Index Up" and h_list[2] == "Middle Down" and h_list == "Ring Down" and h_list == "Pinky Down":
+            print("D")
+        elif h_list[0] == "Thumb Half" and h_list[1] == "Index Half" and h_list[2] == "Middle Half" and h_list == "Ring Half" and h_list == "Pinky Half":
+            print("E")
+        elif h_list[0] == "Thumb Half" and h_list[1] == "Index Half" and h_list[2] == "Middle Up" and h_list == "Ring Up" and h_list == "Pinky Up": 
+            print("F")
+        elif h_list[0] == "Thumb Up" and h_list[1] == "Index Down" and h_list[2] == "Middle Down" and h_list == "Ring Half" and h_list == "Pinky Up":
+            print("G")
+        elif h_list[0] == "Thumb Up" and h_list[1] == "Index Down" and h_list[2] == "Middle Down" and h_list == "Ring Half" and h_list == "Pinky Up":
+            print("G")
+        elif h_list[0] == "Thumb Down" and h_list[1] == "Index Half" and h_list[2] == "Middle Half" and h_list == "Ring Down" and h_list == "Pinky Down":
+            print("H")
+        elif h_list[0] == "Thumb Up" and h_list[1] == "Index Down" and h_list[2] == "Middle Down" and h_list == "Ring Down" and h_list == "Pinky Up":
+            print("I")
+        elif h_list[0] == "Thumb Up" and h_list[1] == "Index Down" and h_list[2] == "Middle Half" and h_list == "Ring Half" and h_list == "Pinky Up":
+            print("J")
+        elif h_list[0] == "Thumb Up" and h_list[1] == "Index Up" and h_list[2] == "Middle Up" and h_list == "Ring Down" and h_list == "Pinky Down":
+            print("K")
+        elif h_list[0] == "Thumb Up" and h_list[1] == "Index Up" and h_list[2] == "Middle Down" and h_list == "Ring Down" and h_list == "Pinky Down":
+            print("L")
+        elif h_list[0] == "Thumb Half" and h_list[1] == "Index Up" and h_list[2] == "Middle Up" and h_list == "Ring Down" and h_list == "Pinky Up":
+            print("M")
+        elif h_list[0] == "Thumb Half" and h_list[1] == "Index Up" and h_list[2] == "Middle Down" and h_list == "Ring Half" and h_list == "Pinky Up":
+            print("N")
+        elif h_list[0] == "Thumb Down" and h_list[1] == "Index Down" and h_list[2] == "Middle Down" and h_list == "Ring Down" and h_list == "Pinky Up":
+            print("O")
+        elif h_list[0] == "Thumb Up" and h_list[1] == "Index Up" and h_list[2] == "Middle Down" and h_list == "Ring Half" and h_list == "Pinky Up":
+            print("P")
+        elif h_list[0] == "Thumb Half" and h_list[1] == "Index Down" and h_list[2] == "Middle Down" and h_list == "Ring Up" and h_list == "Pinky Up":
+            print("Q")
+        elif h_list[0] == "Thumb Down" and h_list[1] == "Index Up" and h_list[2] == "Middle Up" and h_list == "Ring Half" and h_list == "Pinky Half":
+            print("R")
+        elif h_list[0] == "Thumb Half" and h_list[1] == "Index Half" and h_list[2] == "Middle Half" and h_list == "Ring Down" and h_list == "Pinky Down":
+            print("S")
+        elif h_list[0] == "Thumb Up" and h_list[1] == "Index Half" and h_list[2] == "Middle Down" and h_list == "Ring Down" and h_list == "Pinky Down":
+            print("T")
+        elif h_list[0] == "Thumb Down" and h_list[1] == "Index Up" and h_list[2] == "Middle Up" and h_list == "Ring Down" and h_list == "Pinky Down":
+            print("U")
+        elif h_list[0] == "Thumb Up" and h_list[1] == "Index Down" and h_list[2] == "Middle Up" and h_list == "Ring Down" and h_list == "Pinky Up":
+            print("V")
+        elif h_list[0] == "Thumb Half" and h_list[1] == "Index Up" and h_list[2] == "Middle Up" and h_list == "Ring Up" and h_list == "Pinky Down":
+            print("W")
+        elif h_list[0] == "Thumb Half" and h_list[1] == "Index Half" and h_list[2] == "Middle Down" and h_list == "Ring Down" and h_list == "Pinky Down":
+            print("X")
+        elif h_list[0] == "Thumb Up" and h_list[1] == "Index Up" and h_list[2] == "Middle Down" and h_list == "Ring Down" and h_list == "Pinky Up":
+            print("Y")
+        elif h_list[0] == "Thumb Up" and h_list[1] == "Index Up" and h_list[2] == "Middle Up" and h_list == "Ring Down" and h_list == "Pinky Up":
+            print("Z")
+    # print(h_list)
     sleep(0.02)
