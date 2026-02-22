@@ -54,9 +54,9 @@ thumb_up_max = 1.1
 thumb_up_min = 0.75
 
 thumb_half_max = 0.7
-thumb_half_min = -0.2
+thumb_half_min = -0.15
 
-thumb_down_max = -0.3
+thumb_down_max = -0.155
 thumb_down_min = -1.1
 
 index_up_max = 1.1
@@ -71,14 +71,14 @@ index_down_min = -1.1
 middle_up_max = 1.1
 middle_up_min = 0.75
 
-middle_half_max = 0.45
-middle_half_min = -0.4
+middle_half_max = 0.6
+middle_half_min = -0.45
 
-middle_down_max = -0.5
+middle_down_max = -0.46
 middle_down_min = -1.1
 
 ring_up_max = 1.1
-ring_up_min = 0.75
+ring_up_min = 0.5
 
 ring_half_max = 0.45
 ring_half_min = -0.4
@@ -87,14 +87,13 @@ ring_down_max = -0.5
 ring_down_min = -1.1
 
 pinky_up_max = 1.1
-pinky_up_min = 0.75
+pinky_up_min = 0.65
 
-pinky_half_max = 0.45
-pinky_half_min = -0.3
+pinky_half_max = 0.6
+pinky_half_min = -0.1
 
-pinky_down_max = -0.4
+pinky_down_max = -0.11
 pinky_down_min = -1.1
-
 
 
 
