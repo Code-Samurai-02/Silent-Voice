@@ -1,2 +1,2 @@
 lis = ['sahil', 'uddin']
-print(len(lis))
+print(lis[0] == "sahil")
