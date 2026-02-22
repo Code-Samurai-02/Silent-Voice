@@ -1,0 +1,26 @@
+A - 'Thumb Up', 'Index Down', 'Middle Down', 'Ring Down', 'Pinky Down'
+B - 'Thumb Half', 'Index Up', 'Middle Up', 'Ring Up', 'Pinky Up'
+C - 'Thumb Up', 'Index Half', 'Middle Half', 'Ring Half', 'Pinky Half'
+D - 'Thumb Half', 'Index Up', 'Middle Down', 'Ring Down', 'Pinky Down'
+E - 'Thumb Half', 'Index Half', 'Middle Half', 'Ring Half', 'Pinky Half'
+F - 'Thumb Half', 'Index Half', 'Middle Up', 'Ring Up', 'Pinky Up'
+G - 'Thumb Up', 'Index Down', 'Middle Down', 'Ring Half', 'Pinky Up' - E 
+H - 'Thumb Down', 'Index Half', 'Middle Half', 'Ring Down', 'Pinky Down'
+I - 'Thumb Up', 'Index Down', 'Middle Down', 'Ring Down', 'Pinky Up'
+J - 'Thumb Up', 'Index Down', 'Middle Half', 'Ring Half', 'Pinky Up' - E
+K - 'Thumb Up', 'Index Up', 'Middle Up', 'Ring Down', 'Pinky Down'
+L - 'Thumb Up', 'Index Up', 'Middle Down', 'Ring Down', 'Pinky Down'
+M - 'Thumb Half', 'Index Up', 'Middle Up', 'Ring Down', 'Pinky Up' - E
+N - 'Thumb Half', 'Index Up', 'Middle Down', 'Ring Half', 'Pinky Up' - E
+O - 'Thumb Down', 'Index Down', 'Middle Down', 'Ring Down', 'Pinky Up' - E
+P - 'Thumb Up', 'Index Up', 'Middle Down', 'Ring Half', 'Pinky Up' - E
+Q - 'Thumb Half', 'Index Down', 'Middle Down', 'Ring Up', 'Pinky Up' - E
+R - 'Thumb Down', 'Index Up', 'Middle Up', 'Ring Half', 'Pinky Half'
+S - 'Thumb Half', 'Index Half', 'Middle Half', 'Ring Down', 'Pinky Down' - E
+T - 'Thumb Up', 'Index Half', 'Middle Down', 'Ring Down', 'Pinky Down' - E
+U - 'Thumb Down', 'Index Up', 'Middle Up', 'Ring Down', 'Pinky Down' - E
+V - 'Thumb Up', 'Index Down', 'Middle Up', 'Ring Down', 'Pinky Up' - E
+W - 'Thumb Half', 'Index Up', 'Middle Up', 'Ring Up', 'Pinky Down' 
+X - 'Thumb Half', 'Index Half', 'Middle Down', 'Ring Down', 'Pinky Down'
+Y - 'Thumb Up', 'Index Up', 'Middle Down', 'Ring Down', 'Pinky Up' - Y
+Z - 'Thumb Up', 'Index Up', 'Middle Up', 'Ring Down', 'Pinky Up' - E
