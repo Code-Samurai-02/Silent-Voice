@@ -28,4 +28,3 @@ while True:
                 temp = temp + "."
                 print(temp)
                 break
-            
