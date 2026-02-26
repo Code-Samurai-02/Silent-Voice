@@ -1,30 +1,36 @@
 import serial
-import keyboard
-import time
 
-# CHANGE COM PORT
-# Windows example: "COM5"
-# Linux example: "/dev/ttyUSB0"
-# Mac example: "/dev/cu.usbserial-xxxx"
-
-ser = serial.Serial("COM3", 115200, timeout=1)
+ser = serial.Serial("COM7", 115200, timeout=1)
 
 print("Listening...")
-temp = ""
+
+temp = ""              # Final accumulated message
+last_letter = None     # Stores last received valid letter
+
+valid_letters = set("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+
 while True:
     if ser.in_waiting:
         data = ser.readline().decode().strip()
-        if data == "Error":
+
+        if not data or data == "Error":
             continue
-        if data:
-            print("Received:", data)
-            if keyboard.is_pressed('a'):
-                temp = temp + data
-                time.sleep(0.3)
-            elif keyboard.is_pressed('s'):
-                temp = temp + " "
-                time.sleep(0.3)
-            elif keyboard.is_pressed('d'):
-                temp = temp + "."
-                print(temp)
-                break
+
+        print("Received:", data)
+
+        # If letter received, store it but don't append yet
+        if data in valid_letters:
+            last_letter = data
+            print("Stored:", last_letter)
+
+        # If '*' → confirm and append last stored letter
+        elif data == "*":
+            if last_letter:
+                temp += last_letter
+                print("Appended:", last_letter)
+                last_letter = None   # optional reset
+
+        # If '.' → print full message
+        elif data == ".":
+            print("Final Output:", temp)
+            break
