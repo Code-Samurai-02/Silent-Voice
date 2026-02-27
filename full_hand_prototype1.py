@@ -268,7 +268,7 @@ def main():
                 last_press_time[12] = now
         elif buttons[26].value() == 0:
             if now - last_press_time[26] > DEBOUNCE_MS:
-                print("*")
+                print(".")
                 last_press_time[26] = now
         elif buttons[13].value() == 0:
             if now - last_press_time[13] > DEBOUNCE_MS:

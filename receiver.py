@@ -1,5 +1,5 @@
 import serial
-
+import time
 ser = serial.Serial("COM7", 115200, timeout=1)
 
 print("Listening...")
@@ -29,6 +29,7 @@ while True:
                 temp += last_letter
                 print("Appended:", last_letter)
                 last_letter = None   # optional reset
+                time.sleep(0.5)
 
         # If '.' → print full message
         elif data == ".":
