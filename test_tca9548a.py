@@ -1,42 +1,47 @@
 from machine import I2C, Pin
-from time import sleep, ticks_ms
-from tca9548a import TCA9548A
-from mpu6050 import MPU6050
-from imu import IMU
+from time import sleep
 
-i2c = I2C(0, scl=Pin(22), sda=Pin(21))
-tca = TCA9548A(i2c)
+# Initialize I2C (change pins if required)
+i2c = I2C(0, scl=Pin(22), sda=Pin(21), freq=100000)
 
-# Init IMU 0
-tca.select(0)
-mpu0 = MPU6050(i2c)
-imu0 = IMU(mpu0)
+TCA_ADDR = 0x70   # Default TCA9548A address
 
-# Init IMU 1
-tca.select(1)
-mpu1 = MPU6050(i2c)
-imu1 = IMU(mpu1)
+def select_channel(channel):
+    """
+    Select TCA9548A channel (0-7)
+    """
+    if 0 <= channel <= 7:
+        i2c.writeto(TCA_ADDR, bytes([1 << channel]))
+    else:
+        print("Invalid channel")
 
-last0 = ticks_ms()
-last1 = ticks_ms()
+def disable_all_channels():
+    """
+    Disable all channels
+    """
+    i2c.writeto(TCA_ADDR, b'\x00')
 
-while True:
-    # ---- IMU 0 ----
-    tca.select(0)
-    now = ticks_ms()
-    dt0 = (now - last0) / 1000
-    last0 = now
-    r0, p0 = imu0.orientation(dt0)
+print("\n--- Global I2C Scan (No Channel Selected) ---")
+devices = i2c.scan()
+print("Found:", devices)
 
-    # ---- IMU 1 ----
-    tca.select(1)
-    now = ticks_ms()
-    dt1 = (now - last1) / 1000
-    last1 = now
-    r1, p1 = imu1.orientation(dt1)
+if TCA_ADDR in devices:
+    print("TCA9548A detected at 0x70\n")
+else:
+    print("TCA9548A NOT detected. Check wiring.")
+    raise SystemExit
 
-    print(f"IMU0 → Roll:{r0:.2f} Pitch:{p0:.2f}")
-    print(f"IMU1 → Roll:{r1:.2f} Pitch:{p1:.2f}")
-    print("-" * 35)
+print("--- Scanning All TCA Channels ---")
 
-    sleep(0.02)
+for ch in range(8):
+    select_channel(ch)
+    sleep(0.1)   # Small delay for stability
+    devices = i2c.scan()
+    
+    # Remove TCA address from result if present
+    devices = [d for d in devices if d != TCA_ADDR]
+    
+    print("Channel", ch, ":", devices)
+
+disable_all_channels()
+print("\nScan Complete.")
