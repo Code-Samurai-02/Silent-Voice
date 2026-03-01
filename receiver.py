@@ -1,9 +1,11 @@
 import serial
 import time
+import middleware
 ser = serial.Serial("COM7", 115200, timeout=1)
 
 print("Listening...")
-
+last_star_time = 0
+STAR_DEBOUNCE_MS = 500
 temp = ""              # Final accumulated message
 last_letter = None     # Stores last received valid letter
 
@@ -25,13 +27,24 @@ while True:
 
         # If '*' → confirm and append last stored letter
         elif data == "*":
+            current_time = time.time() * 1000
+
+            if (current_time - last_star_time) < STAR_DEBOUNCE_MS:
+                continue  # ignore repeated star
+
+            last_star_time = current_time
+
             if last_letter:
                 temp += last_letter
                 print("Appended:", last_letter)
-                last_letter = None   # optional reset
-                time.sleep(0.5)
+                last_letter = None
+            time.sleep(1)
 
         # If '.' → print full message
         elif data == ".":
             print("Final Output:", temp)
-            break
+            middleware.send_text(str(temp))
+            time.sleep(1.5)
+            temp = ""
+            last_letter = ""
+            continue

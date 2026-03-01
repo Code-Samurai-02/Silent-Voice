@@ -15,7 +15,7 @@ N - 'Thumb Half', 'Index Up', 'Middle Down', 'Ring Half', 'Pinky Up' - E
 O - 'Thumb Down', 'Index Down', 'Middle Down', 'Ring Down', 'Pinky Up' - E
 P - 'Thumb Up', 'Index Up', 'Middle Down', 'Ring Half', 'Pinky Up' - E
 Q - 'Thumb Half', 'Index Down', 'Middle Down', 'Ring Half', 'Pinky Up' - E
-R - 'Thumb Up', 'Index Up', 'Middle Up', 'Ring Up', 'Pinky Half'
+R - 'Thumb Down', 'Index Up', 'Middle Up', 'Ring Down', 'Pinky Down'
 S - 'Thumb Half', 'Index Half', 'Middle Half', 'Ring Down', 'Pinky Down' - E
 T - 'Thumb Up', 'Index Half', 'Middle Down', 'Ring Down', 'Pinky Down' - E
 U - 'Thumb Half', 'Index Up', 'Middle Up', 'Ring Down', 'Pinky Down' - E

@@ -242,7 +242,7 @@ def main():
                 print("P")
             elif h_list[0] == "Thumb Half" and h_list[1] == "Index Down" and h_list[2] == "Middle Down" and h_list[3] == "Ring Half" and h_list[4] == "Pinky Up":
                 print("Q")
-            elif h_list[0] == "Thumb Up" and h_list[1] == "Index Up" and h_list[2] == "Middle Up" and h_list[3] == "Ring Up" and h_list[4] == "Pinky Half":
+            elif h_list[0] == "Thumb Down" and h_list[1] == "Index Up" and h_list[2] == "Middle Up" and h_list[3] == "Ring Down" and h_list[4] == "Pinky Down":
                 print("R")
             elif h_list[0] == "Thumb Half" and h_list[1] == "Index Half" and h_list[2] == "Middle Half" and h_list[3] == "Ring Down" and h_list[4] == "Pinky Down":
                 print("S")
@@ -266,6 +266,7 @@ def main():
             if now - last_press_time[12] > DEBOUNCE_MS:
                 print(" ")
                 last_press_time[12] = now
+                sleep(1)
         elif buttons[26].value() == 0:
             if now - last_press_time[26] > DEBOUNCE_MS:
                 print(".")
@@ -278,6 +279,7 @@ def main():
             if now - last_press_time[27] > DEBOUNCE_MS:
                 print("*")
                 last_press_time[27] = now
+                sleep(1)
         else:
             pass
         sleep(0.02)
