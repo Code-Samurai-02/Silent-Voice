@@ -50,23 +50,23 @@ def safe_accel(imu_obj, channel, addr):
 
 # ---------- Initialization ----------
 
-# from machine import Pin
-# from time import ticks_ms, sleep
+from machine import Pin
+from time import ticks_ms, sleep
 
-# # Define button pins
-# pins = [12, 13, 27, 26]
+# Define button pins
+pins = [12, 13, 27, 26]
 
-# # Create button objects with internal pull-up
-# buttons = {}
-# last_press_time = {}
+# Create button objects with internal pull-up
+buttons = {}
+last_press_time = {}
 
-# for p in pins:
-#     buttons[p] = Pin(p, Pin.IN, Pin.PULL_UP)
-#     last_press_time[p] = 0
+for p in pins:
+    buttons[p] = Pin(p, Pin.IN, Pin.PULL_UP)
+    last_press_time[p] = 0
 
-# print("Press any button (12, 13, 27, 26)")
+print("Press any button (12, 13, 27, 26)")
 
-# DEBOUNCE_MS = 250
+DEBOUNCE_MS = 250
 
 
 
@@ -261,27 +261,27 @@ def main():
             elif h_list[0] == "Thumb Up" and h_list[1] == "Index Up" and h_list[2] == "Middle Up" and h_list[3] == "Ring Down" and h_list[4] == "Pinky Up":
                 print("Z")
         print(h_list)
-        # now = ticks_ms()
-        # if buttons[12].value() == 0:
-        #     if now - last_press_time[12] > DEBOUNCE_MS:
-        #         print(" ")
-        #         last_press_time[12] = now
-        #         sleep(1)
-        # elif buttons[26].value() == 0:
-        #     if now - last_press_time[26] > DEBOUNCE_MS:
-        #         print(".")
-        #         last_press_time[26] = now
-        # elif buttons[13].value() == 0:
-        #     if now - last_press_time[13] > DEBOUNCE_MS:
-        #         #pass
-        #         last_press_time[13] = now
-        # elif buttons[27].value() == 0:
-        #     if now - last_press_time[27] > DEBOUNCE_MS:
-        #         print("*")
-        #         last_press_time[27] = now
-        #         sleep(1)
-        # else:
-        #     pass
+        now = ticks_ms()
+        if buttons[12].value() == 0:
+            if now - last_press_time[12] > DEBOUNCE_MS:
+                print(" ")
+                last_press_time[12] = now
+                sleep(1)
+        elif buttons[26].value() == 0:
+            if now - last_press_time[26] > DEBOUNCE_MS:
+                print(".")
+                last_press_time[26] = now
+        elif buttons[13].value() == 0:
+            if now - last_press_time[13] > DEBOUNCE_MS:
+                #pass
+                last_press_time[13] = now
+        elif buttons[27].value() == 0:
+            if now - last_press_time[27] > DEBOUNCE_MS:
+                print("*")
+                last_press_time[27] = now
+                sleep(1)
+        else:
+            pass
         sleep(0.02)
 
 

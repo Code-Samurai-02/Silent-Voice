@@ -1,7 +1,7 @@
 import serial
 import time
 import middleware
-ser = serial.Serial("COM7", 115200, timeout=1)
+ser = serial.Serial("COM5", 115200, timeout=1)
 
 print("Listening...")
 last_star_time = 0
@@ -13,7 +13,8 @@ valid_letters = set("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 
 while True:
     if ser.in_waiting:
-        data = ser.readline().decode().strip()
+        data = ser.readline().decode(errors="ignore")
+        data = data.replace("\r", "").replace("\n", "")
 
         if not data or data == "Error":
             continue
@@ -26,6 +27,9 @@ while True:
             print("Stored:", last_letter)
 
         # If '*' → confirm and append last stored letter
+        elif data == " ":
+            temp += " "
+            time.sleep(1)
         elif data == "*":
             current_time = time.time() * 1000
 
