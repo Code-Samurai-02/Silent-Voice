@@ -1,8 +1,17 @@
 import serial
 import time
 import middleware
-ser = serial.Serial("COM5", 115200, timeout=1)
+import middleware_hi
 
+
+while True:
+    lan = int(input("Choose your language(1/2): 1.English, 2.Hindi : "))
+    if lan ==1 or lan == 2:
+        print("Langauge", lan)
+        break
+    else:
+        print("Wrong input")
+ser = serial.Serial("COM5", 115200, timeout=1)
 print("Listening...")
 last_star_time = 0
 STAR_DEBOUNCE_MS = 500
@@ -47,7 +56,10 @@ while True:
         # If '.' → print full message
         elif data == ".":
             print("Final Output:", temp)
-            middleware.send_text(str(temp))
+            if (lan == 1):
+                middleware.send_text(str(temp))
+            elif (lan == 2): 
+                middleware_hi.send_text(str(temp))
             time.sleep(1.5)
             temp = ""
             last_letter = ""
