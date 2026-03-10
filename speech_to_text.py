@@ -1,8 +1,6 @@
+from faster_whisper import WhisperModel
 import sounddevice as sd
 import numpy as np
-from faster_whisper import WhisperModel
-import queue
-import threading
 
 model = WhisperModel(
     "small",
@@ -11,33 +9,17 @@ model = WhisperModel(
 )
 
 samplerate = 16000
-block_duration = 2
-q = queue.Queue()
+duration = 3
 
-def audio_callback(indata, frames, time, status):
-    q.put(indata.copy())
+print("Listening...")
 
-def transcribe_worker():
-    while True:
-        audio = q.get()
-        audio = np.squeeze(audio)
-        segments, _ = model.transcribe(
-            audio,
-            language="en",
-            beam_size=5
-        )
-        for segment in segments:
-            print(">>", segment.text)
+while True:
+    audio = sd.rec(int(duration * samplerate), samplerate=samplerate, channels=1)
+    sd.wait()
 
-threading.Thread(target=transcribe_worker, daemon=True).start()
+    audio = np.squeeze(audio)
 
-with sd.InputStream(
-    samplerate=samplerate,
-    channels=1,
-    dtype="float32",
-    blocksize=int(samplerate * block_duration),
-    callback=audio_callback
-):
-    print("Listening...")
-    while True:
-        pass    
+    segments, _ = model.transcribe(audio)
+
+    for seg in segments:
+        print("Speech:", seg.text)

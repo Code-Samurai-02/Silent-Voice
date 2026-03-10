@@ -1,2 +1,3 @@
-import middleware_hi
-middleware_hi.send_text("Who are you?")
+import torch
+print(torch.cuda.is_available())
+print(torch.cuda.get_device_name(0))

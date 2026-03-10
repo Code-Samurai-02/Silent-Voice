@@ -20,10 +20,20 @@ while True:
     conn, addr = server.accept()
     data = conn.recv(1024).decode()
 
-    if data:
-        print("Speaking:", data)
-        wav = tts.tts(data)
-        wav = np.array(wav, dtype=np.float32)
-        sd.play(wav, samplerate=22050)
+    # Clean the text
+    data = data.strip()
+
+    if len(data) > 0:
+        try:
+            print("Speaking:", data)
+
+            wav = tts.tts(data)
+            wav = np.array(wav, dtype=np.float32)
+
+            sd.stop()  # stop previous audio if playing
+            sd.play(wav, samplerate=22050)
+
+        except Exception as e:
+            print("TTS Error:", e)
 
     conn.close()
