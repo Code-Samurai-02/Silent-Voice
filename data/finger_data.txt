@@ -24,3 +24,24 @@ W - 'Thumb Half', 'Index Up', 'Middle Up', 'Ring Up', 'Pinky Down'
 X - 'Thumb Half', 'Index Half', 'Middle Down', 'Ring Down', 'Pinky Down'
 Y - 'Thumb Up', 'Index Up', 'Middle Down', 'Ring Down', 'Pinky Up' - Y
 Z - 'Thumb Up', 'Index Up', 'Middle Up', 'Ring Down', 'Pinky Up' - E
+
+
+HELP - 'Thumb Half', 'Index Down', 'Middle Up', 'Ring Up', 'Pinky Up' - E
+PAIN - 'Thumb Down', 'Index Up', 'Middle Half', 'Ring Up', 'Pinky Down' - E 
+AMBULANCE - 'Thumb Down', 'Index Half', 'Middle Up', 'Ring Up', 'Pinky Half' - E
+STOP - 'Thumb Down', 'Index Up', 'Middle Up', 'Ring Half', 'Pinky Half' - E
+REPEAT - 'Thumb Down', 'Index Up', 'Middle Half', 'Ring Up', 'Pinky Half' - E
+DANGER - 'Thumb Down', 'Index Half', 'Middle Half', 'Ring Up', 'Pinky Up' - E
+WATER - 'Thumb Down', 'Index Down', 'Middle Half', 'Ring Up', 'Pinky Half' - E
+HUNGRY - 'Thumb Down', 'Index Down', 'Middle Up', 'Ring Half', 'Pinky Half' - E
+MEDICINE - 'Thumb Down', 'Index Half', 'Middle Down', 'Ring Up', 'Pinky Up' - E
+BATHROOM - 'Thumb Down', 'Index Up', 'Middle Down', 'Ring Up', 'Pinky Half' - E
+POLICE - 'Thumb Down', 'Index Half', 'Middle Up', 'Ring Half', 'Pinky Up' - E
+YES - 'Thumb Down', 'Index Down', 'Middle Half', 'Ring Half', 'Pinky Up' - E
+NO - 'Thumb Down', 'Index Down', 'Middle Up', 'Ring Down', 'Pinky Half' - E
+WAIT - 'Thumb Down', 'Index Up', 'Middle Half', 'Ring Half', 'Pinky Up' - E
+COME - 'Thumb Down', 'Index Half', 'Middle Up', 'Ring Down', 'Pinky Up' - E
+GO - 'Thumb Down', 'Index Up', 'Middle Up', 'Ring Half', 'Pinky Down' - E
+THANK YOU - 'Thumb Down', 'Index Half', 'Middle Down', 'Ring Half', 'Pinky Up' - E
+SORRY - 'Thumb Down', 'Index Half', 'Middle Up', 'Ring Half', 'Pinky Half' - E
+OK - 'Thumb Down', 'Index Half', 'Middle Half', 'Ring Up', 'Pinky Half' - E

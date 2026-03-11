@@ -1,0 +1,93 @@
+[33maef8642[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m Remove Twilio credentials and use environment variables
+[33md24a876[m Calling feature Added
+[33mada8352[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Update
+[33m74e7680[m Update readme
+[33m224bcc7[m Update Security
+[33m991630c[m Create SECURITY.md for security policy
+[33mb80f736[m update requirements.txt
+[33m3b134fa[m Final Apk
+[33me941a90[m Update App
+[33m01a633d[m Added flowchart in readme
+[33md802993[m Init App and 1st Prototype of app
+[33m051d4f6[m Merge branch 'main' of https://github.com/Code-Samurai-02/Silent-Voice
+[33m4c14256[m Init App folder
+[33mb81119a[m Add files via upload
+[33m7317a94[m Updated Voice
+[33mb20f10f[m Speech to Text in Multi-language
+[33mc708474[m Update readme and delete extra unused files
+[33m1e5d46b[m Speech to text
+[33m686464f[m Cleaning Repo
+[33m0487a4b[m Delete Unused files
+[33mddcff96[m Update
+[33me5d2b24[m Update
+[33mfd4c283[m update Outgoing
+[33m3d61974[m Update
+[33me14fcbf[m Update signs
+[33m16e3f9d[m Upadte
+[33m9629266[m Update
+[33m6f92cbc[m Update the test file
+[33m7c4ded2[m Update
+[33mf187d59[m Update
+[33m0a0be41[m Update
+[33mcf5442c[m Cleaning Update
+[33m11f235b[m Updates
+[33m9c5693b[m Data Update
+[33mf1ebc07[m prototype 1 update
+[33m860b0e7[m Prototype Test 1
+[33me06542c[m Update
+[33m1d2f7ae[m Update
+[33m485d723[m Update
+[33m543a68e[m Update Z
+[33m9a16ebe[m Update Y
+[33m2971a70[m Update X
+[33mec6dab5[m update W
+[33m71e2328[m Update V
+[33m731f92a[m Update U
+[33mdc9f9b9[m Update S and T
+[33me57ea97[m Update R
+[33m9824050[m Update Q
+[33m5ab5da0[m Update P
+[33m7653ea8[m Update O
+[33m2343d8c[m Update N
+[33mb0a854f[m Update M
+[33made0f86[m Update L
+[33m81f1696[m Update K
+[33m7aac549[m Update J
+[33m59fa19d[m Update
+[33m63f80af[m Update
+[33m78e7292[m Update
+[33m5f41db1[m Update
+[33m5642907[m Update
+[33m0b76250[m Update
+[33mb1e0d3f[m Update
+[33m921d562[m Update
+[33m9389e27[m Update
+[33m7ccd64e[m Wifi Update
+[33m096cb9c[m Wifi Update
+[33mf135984[m update thumb_finger.py
+[33mb484450[m Wifi Update
+[33mcb51510[m Update
+[33mae73398[m Update
+[33m5f96f1d[m PI test
+[33m9e52ff0[m Thumb Finger Added
+[33mf8c7513[m Ring and Pinky Finger Added
+[33me977892[m Middle Finger Added
+[33m62530a0[m Update
+[33ma98cb56[m Update
+[33me00459e[m Upadte
+[33ma0ffd18[m Upadte
+[33m78b8626[m Upadte
+[33m72da080[m Update
+[33mcd74496[m Upadte
+[33m31240b5[m Update
+[33md09d22c[m Update
+[33mc7d8fb5[m Update
+[33m49504ad[m Update
+[33mb5821ec[m Update
+[33mcac3776[m Update
+[33m12cb85d[m Test
+[33md6779fa[m tca9548a library added
+[33mdddf139[m imu library
+[33m70d9d9c[m mpu6250 library added
+[33m9571fab[m mpu6050 library added
+[33mb05dbad[m Initial commit
