@@ -11,7 +11,7 @@ while True:
         break
     else:
         print("Wrong input")
-ser = serial.Serial("COM5", 115200, timeout=1)
+ser = serial.Serial("COM3", 115200, timeout=1)
 print("Listening...")
 last_star_time = 0
 STAR_DEBOUNCE_MS = 500
