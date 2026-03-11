@@ -1,5 +1,8 @@
+# Standard Library
 import tkinter as tk
 import threading
+
+# Third-party Libraries
 import sounddevice as sd
 import numpy as np
 from faster_whisper import WhisperModel
