@@ -39,3 +39,5 @@ aiohttp>=3.13.0
 # Visualization & Utilities (Optional but recommended)
 matplotlib>=3.7.0
 coloredlogs>=15.0
+
+# End of requirements.txt
