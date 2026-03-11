@@ -70,6 +70,12 @@ Silent-Voice is an innovative project that recognizes hand gestures using Inerti
 
 ---
 
+## System Architecture Diagram
+
+![Silent Voice Flowchart](images/Silent_Voice_Flow_Chart.png)
+
+---
+
 ## Installation
 
 ### Prerequisites
