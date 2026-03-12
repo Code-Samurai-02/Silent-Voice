@@ -71,7 +71,7 @@ DEBOUNCE_MS = 250
 
 
 tca_select(0)
-imu1 = IMU(MPU6050(i2c, addr=0x68))
+imu1 = IMU(MPU6050(i2c, addr=0x69))
 
 tca_select(1)
 imu2 = IMU(MPU6050(i2c, addr=0x68))
@@ -140,7 +140,7 @@ def main():
     while True:
         wdt.feed()
         h_list = []
-        ax1, ay1, az1 = safe_accel(imu1, 0, 0x68)
+        ax1, ay1, az1 = safe_accel(imu1, 0, 0x69)
         ax2, ay2, az2 = safe_accel(imu2, 1, 0x68)
         ax3, ay3, az3 = safe_accel(imu3, 2, 0x68)
         ax4, ay4, az4 = safe_accel(imu4, 3, 0x68)
