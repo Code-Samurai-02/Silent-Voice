@@ -8,9 +8,51 @@ from machine import Pin
 led = Pin(2, Pin.OUT)   # GPIO2 as output
 led.value(0)            # LED ON
 
+add_list = []
+
+
 
 i2c = I2C(0, scl=Pin(22), sda=Pin(21), freq=100000)
 TCA_ADDR = 0x70
+def select_channel(channel):
+    """
+    Select TCA9548A channel (0-7)
+    """
+    if 0 <= channel <= 7:
+        i2c.writeto(TCA_ADDR, bytes([1 << channel]))
+    else:
+        print("Invalid channel")
+
+def disable_all_channels():
+    """
+    Disable all channels
+    """
+    i2c.writeto(TCA_ADDR, b'\x00')
+
+print("\n--- Global I2C Scan (No Channel Selected) ---")
+devices = i2c.scan()
+print("Found:", devices)
+
+if TCA_ADDR in devices:
+    print("TCA9548A detected at 0x70\n")
+else:
+    print("TCA9548A NOT detected. Check wiring.")
+    raise SystemExit
+
+print("--- Scanning All TCA Channels ---")
+
+for ch in range(8):
+    select_channel(ch)
+    sleep(0.1)   # Small delay for stability
+    devices = i2c.scan()
+    
+    # Remove TCA address from result if present
+    devices = [d for d in devices if d != TCA_ADDR]
+    add_list.append(devices)
+    print("Channel", ch, ":", devices)
+print(add_list)
+disable_all_channels()
+print("\nScan Complete.")
 wdt = WDT(timeout=5000)   # 5 seconds safety reset
 def i2c_recover():
     global i2c
@@ -77,19 +119,45 @@ DEBOUNCE_MS = 250
 
 
 tca_select(0)
-imu1 = IMU(MPU6050(i2c, addr=0x68))
+if (add_list[0] == [104]):
+    print("IMU1 Detected")
+    imu1 = IMU(MPU6050(i2c, addr=0x68))
+elif (add_list[0] == [105]):
+    print("IMU1 Detected at different address")
+    imu1 = IMU(MPU6050(i2c, addr=0x69))
+
 
 tca_select(1)
-imu2 = IMU(MPU6050(i2c, addr=0x68))
+if (add_list[1] == [104]):
+    print("IMU2 Detected")
+    imu2 = IMU(MPU6050(i2c, addr=0x68))
+elif (add_list[1] == [105]):
+    print("IMU2 Detected at different address")
+    imu2 = IMU(MPU6050(i2c, addr=0x69))
 
 tca_select(2)
-imu3 = IMU(MPU6050(i2c, addr=0x68))
+if (add_list[2] == [104]):
+    print("IMU3 Detected")
+    imu3 = IMU(MPU6050(i2c, addr=0x68))
+elif (add_list[2] == [105]):
+    print("IMU3 Detected at different address")
+    imu3 = IMU(MPU6050(i2c, addr=0x69))
 
 tca_select(3)
-imu4 = IMU(MPU6050(i2c, addr=0x68))
+if (add_list[3] == [104]):
+    print("IMU4 Detected")
+    imu4 = IMU(MPU6050(i2c, addr=0x68))
+elif (add_list[3] == [105]):
+    print("IMU4 Detected at different address")
+    imu4 = IMU(MPU6050(i2c, addr=0x69))
 
 tca_select(4)
-imu5 = IMU(MPU6050(i2c, addr=0x68))
+if (add_list[4] == [104]):
+    print("IMU5 Detected")
+    imu5 = IMU(MPU6050(i2c, addr=0x68))
+elif (add_list[4] == [105]):
+    print("IMU5 Detected at different address")
+    imu5 = IMU(MPU6050(i2c, addr=0x69))
 
 
 thumb_up_max = 1.1
@@ -142,16 +210,32 @@ pinky_down_min = -1.1
 
 h_list = []
 # ---------- Main Loop ----------
+
 def main():
     while True:
         led.value(0)
         wdt.feed()
         h_list = []
-        ax1, ay1, az1 = safe_accel(imu1, 0, 0x68)
-        ax2, ay2, az2 = safe_accel(imu2, 1, 0x68)
-        ax3, ay3, az3 = safe_accel(imu3, 2, 0x68)
-        ax4, ay4, az4 = safe_accel(imu4, 3, 0x68)
-        ax5, ay5, az5 = safe_accel(imu5, 4, 0x68)
+        if (add_list[0] == [104]):
+            ax1, ay1, az1 = safe_accel(imu1, 0, 0x68)
+        elif (add_list[0] == [105]):
+            ax1, ay1, az1 = safe_accel(imu1, 0, 0x69)
+        if (add_list[1] == [104]):
+            ax2, ay2, az2 = safe_accel(imu2, 1, 0x68)
+        elif (add_list[1] == [105]):
+            ax2, ay2, az2 = safe_accel(imu2, 1, 0x69)
+        if (add_list[2] == [104]):
+            ax3, ay3, az3 = safe_accel(imu3, 2, 0x68)
+        elif (add_list[2] == [105]):
+            ax3, ay3, az3 = safe_accel(imu3, 2, 0x69)
+        if (add_list[3] == [104]):
+            ax4, ay4, az4 = safe_accel(imu4, 3, 0x68)
+        elif (add_list[3] == [105]):
+            ax4, ay4, az4 = safe_accel(imu4, 3, 0x69)
+        if (add_list[4] == [104]):
+            ax5, ay5, az5 = safe_accel(imu5, 4, 0x68)
+        elif (add_list[4] == [105]):
+            ax5, ay5, az5 = safe_accel(imu5, 4, 0x69)
         
         if(ax1 == 0 or ay1 == 0 or az1 == 0 or ax2 == 0 or ay2 == 0 or az2 == 0 or ax3 == 0 or ay3 == 0 or az3 == 0 or ax4 == 0 or ay4 == 0 or az4 == 0 or ax5 == 0 or ay5 == 0 or az5 == 0):
             continue
@@ -302,4 +386,6 @@ try:
     main()
 except KeyboardInterrupt:
     print("Stopped")
+
+
 

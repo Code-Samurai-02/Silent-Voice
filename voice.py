@@ -121,7 +121,7 @@ root.configure(bg="#121212")
 
 
 title = tk.Label(root,
-                 text="Speech → Text / Sign",
+                 text="Silent Voice : Speech → Text / Sign",
                  font=("Arial", 22, "bold"),
                  bg="#121212",
                  fg="#00d9ff")
