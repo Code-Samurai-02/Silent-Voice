@@ -3,6 +3,12 @@ from time import sleep, ticks_ms
 from mpu6050 import MPU6050
 from imu import IMU
 from machine import WDT
+from machine import Pin
+
+led = Pin(2, Pin.OUT)   # GPIO2 as output
+led.value(0)            # LED ON
+
+
 i2c = I2C(0, scl=Pin(22), sda=Pin(21), freq=100000)
 TCA_ADDR = 0x70
 wdt = WDT(timeout=5000)   # 5 seconds safety reset
@@ -138,6 +144,7 @@ h_list = []
 # ---------- Main Loop ----------
 def main():
     while True:
+        led.value(0)
         wdt.feed()
         h_list = []
         ax1, ay1, az1 = safe_accel(imu1, 0, 0x68)
@@ -268,18 +275,22 @@ def main():
             if now - last_press_time[12] > DEBOUNCE_MS:
                 print(" ")
                 last_press_time[12] = now
+                led.value(1)  # LED On
                 sleep(1)
         elif buttons[26].value() == 0:
             if now - last_press_time[26] > DEBOUNCE_MS:
                 print(".")
+                led.value(1)  # LED On
                 last_press_time[26] = now
         elif buttons[13].value() == 0:
             if now - last_press_time[13] > DEBOUNCE_MS:
                 print("#")
+                led.value(1)  # LED On
                 last_press_time[13] = now
         elif buttons[27].value() == 0:
             if now - last_press_time[27] > DEBOUNCE_MS:
                 print("*")
+                led.value(1)  # LED On
                 last_press_time[27] = now
                 sleep(1)
         else:
