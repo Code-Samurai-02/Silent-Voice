@@ -8,7 +8,7 @@ import middleware
 import middleware_hi
 
 
-ser = serial.Serial("COM3", 115200, timeout=1)
+ser = serial.Serial("COM5", 115200, timeout=1)
 
 last_star_time = 0
 STAR_DEBOUNCE_MS = 500
@@ -54,7 +54,9 @@ def serial_reader():
             if data in valid_letters:
                 last_letter = data
                 stored_text.set(last_letter)
-
+            elif data == "EMERGENCYCALL":
+                last_letter = "EMERGENCYCALL"
+                stored_text.set(last_letter)
             elif data == " ":
                 temp += " "
                 sentence_text.set(temp)
@@ -79,7 +81,12 @@ def serial_reader():
             elif data == ".":
 
                 final_text.set(temp)
-
+                if temp == "EMERGENCYCALL":
+                    print("EMERGENCY CALL TRIGGERED")
+                    import call
+                    temp = ""
+                    last_letter = ""
+                    continue
                 if lan == 1:
                     middleware.send_text(str(temp))
                 elif lan == 2:

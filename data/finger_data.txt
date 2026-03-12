@@ -22,7 +22,7 @@ U - 'Thumb Half', 'Index Up', 'Middle Up', 'Ring Down', 'Pinky Down' - E
 V - 'Thumb Up', 'Index Down', 'Middle Up', 'Ring Down', 'Pinky Up' - E
 W - 'Thumb Half', 'Index Up', 'Middle Up', 'Ring Up', 'Pinky Down' 
 X - 'Thumb Half', 'Index Half', 'Middle Down', 'Ring Down', 'Pinky Down'
-Y - 'Thumb Up', 'Index Up', 'Middle Down', 'Ring Down', 'Pinky Up' - Y
+Y - 'Thumb Up', 'Index Up', 'Middle Down', 'Ring Down', 'Pinky Up'
 Z - 'Thumb Up', 'Index Up', 'Middle Up', 'Ring Down', 'Pinky Up' - E
 
 
@@ -45,3 +45,4 @@ GO - 'Thumb Down', 'Index Up', 'Middle Up', 'Ring Half', 'Pinky Down' - E
 THANK YOU - 'Thumb Down', 'Index Half', 'Middle Down', 'Ring Half', 'Pinky Up' - E
 SORRY - 'Thumb Down', 'Index Half', 'Middle Up', 'Ring Half', 'Pinky Half' - E
 OK - 'Thumb Down', 'Index Half', 'Middle Half', 'Ring Up', 'Pinky Half' - E
+EMERGENCY - 'Thumb Half', 'Index Down', 'Middle Up', 'Ring Down', Pinky Up' -E 

@@ -260,6 +260,8 @@ def main():
                 print("Y")
             elif h_list[0] == "Thumb Up" and h_list[1] == "Index Up" and h_list[2] == "Middle Up" and h_list[3] == "Ring Down" and h_list[4] == "Pinky Up":
                 print("Z")
+            elif h_list[0] == "Thumb Half" and h_list[1] == "Index Down" and h_list[2] == "Middle Up" and h_list[3] == "Ring Down" and h_list[4] == "Pinky Up":
+                print("EMERGENCYCALL")
         print(h_list)
         now = ticks_ms()
         if buttons[12].value() == 0:
