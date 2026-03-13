@@ -14,7 +14,7 @@ from PIL import Image, ImageTk
 model = WhisperModel("large-v3", device="cuda", compute_type="float16")
 
 samplerate = 16000
-duration = 5
+duration = 4
 threshold = 0.01
 running = False
 mode = "text"
