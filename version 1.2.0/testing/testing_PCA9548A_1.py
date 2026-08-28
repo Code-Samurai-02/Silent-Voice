@@ -6,7 +6,7 @@ i2c = I2C(
     0,
     scl=Pin(22),
     sda=Pin(21),
-    freq=400000
+    freq=400000,
 )
 
 PCA_ADDR = 0x70
