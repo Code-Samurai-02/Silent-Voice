@@ -4,6 +4,8 @@ from mpu6050 import MPU6050
 import network
 import socket
 
+
+
 # 1. Connect to Wi-Fi
 ssid = 'Airtel_AIRTEL'
 password = 'Airtel@2007'
