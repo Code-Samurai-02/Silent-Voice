@@ -49,8 +49,7 @@ for channel in range(5):
 
     select_channel(channel)
 
-    print("Channel", channel, "scan:",
-          [hex(x) for x in i2c.scan()])
+    print("Channel", channel, "scan:", [hex(x) for x in i2c.scan()])
 
     mpus[channel].begin()
 
@@ -60,7 +59,7 @@ for channel in range(5):
 
 
 # =========================
-# Min / Max for AX
+# AX for all fingers
 # =========================
 
 finger_ax = [0.0, 0.0, 0.0, 0.0, 0.0]
@@ -78,15 +77,7 @@ while True:
         # Read accelerometer
         ax, ay, az = mpus[channel].get_accel()
         finger_ax[channel] = ax
-        # -------------------------
-        # Print
-        # -------------------------
-        # print(
-        #     "MPU", channel + 1,
-        #     "| AX:", ax,
-        #     "| AY:", ay,
-        #     "| AZ:", az
-        # )
+        
         print("-----------------------------")
         if(finger_ax[0] > 0.55):
             print("Thumb Up")

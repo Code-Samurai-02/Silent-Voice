@@ -7,6 +7,8 @@ pipeline = KPipeline(lang_code="a")
 print("Kokoro TTS ready.")
 print("Type text and press Enter. Type 'exit' to quit.\n")
 
+
+
 while True:
     text = input("You: ").strip()
 

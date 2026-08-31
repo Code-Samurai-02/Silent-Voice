@@ -15,7 +15,6 @@ while not wifi.isconnected():
 
 print("ESP32 IP:", wifi.ifconfig()[0])
 
-import urequests
 
 laptop_ip = "10.32.173.160"
 

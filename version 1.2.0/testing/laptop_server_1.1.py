@@ -6,7 +6,7 @@ app = Flask(__name__)
 def receive_data():
     data = request.get_json()
 
-    print("Received:", data)
+    print("Received:", data["message"])
 
     return {"status": "ok"}
 

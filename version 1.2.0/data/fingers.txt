@@ -1,0 +1,26 @@
+A - Thumb_Up-Index_Down-Middle_Down-Ring_Down-Pinky_Down
+B - Thumb_Half-Index_Up-Middle_Up-Ring_Up-Pinky_Up
+C - Thumb_Up-Index_Half-Middle_Half-Ring_Half-Pinky_Half
+D - Thumb_Half-Index_Up-Middle_Down-Ring_Down-Pinky_Down
+E - Thumb_Half-Index_Half-Middle_Half-Ring_Half-Pinky_Half
+F - Thumb_Half-Index_Half-Middle_Up-Ring_Up-Pinky_Up
+G - Thumb_Up-Index_Down-Middle_Down-Ring_Half-Pinky_Up - E
+H - Thumb_Down-Index_Half-Middle_Half-Ring_Down-Pinky_Down
+I - Thumb_Up-Index_Down-Middle_Down-Ring_Down-Pinky_Up
+J - Thumb_Up-Index_Down-Middle_Half-Ring_Half-Pinky_Up - E
+K - Thumb_Up-Index_Up-Middle_Up-Ring_Down-Pinky_Down
+L - Thumb_Up-Index_Up-Middle_Down-Ring_Down-Pinky_Down
+M - Thumb_Half-Index_Up-Middle_Up-Ring_Down-Pinky_Up - E
+N - Thumb_Half-Index_Up-Middle_Down-Ring_Half-Pinky_Up - E
+O - Thumb_Down-Index_Down-Middle_Down-Ring_Down-Pinky_Up - E
+P - Thumb_Up-Index_Up-Middle_Down-Ring_Half-Pinky_Up - E
+Q - Thumb_Half-Index_Down-Middle_Down-Ring_Half-Pinky_Up
+R - Thumb_Down-Index_Up-Middle_Up-Ring_Down-Pinky_Down
+S - Thumb_Half-Index_Half-Middle_Half-Ring_Down-Pinky_Down - E
+T - Thumb_Up-Index_Half-Middle_Down-Ring_Down-Pinky_Down - E
+U - Thumb_Half-Index_Up-Middle_Up-Ring_Down-Pinky_Down - E
+V - Thumb_Up-Index_Down-Middle_Up-Ring_Down-Pinky_Up
+W - Thumb_Half-Index_Up-Middle_Up-Ring_Up-Pinky_Down
+X - Thumb_Half-Index_Half-Middle_Down-Ring_Down-Pinky_Down
+Y - Thumb_Up-Index_Up-Middle_Down-Ring_Down-Pinky_Up
+Z - Thumb_Up-Index_Up-Middle_Up-Ring_Down-Pinky_Up - E
